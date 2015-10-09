@@ -1,5 +1,6 @@
 using System.Data.Entity;
 using Devtalk.EF.CodeFirst;
+using ProfNotebook.Business.Context;
 
 [assembly: WebActivator.PreApplicationStartMethod(typeof(ProfNotebook.Business.App_Start.DontDropDbJustCreateTablesIfModelChangedStart), "Start")]
 
@@ -8,7 +9,7 @@ namespace ProfNotebook.Business.App_Start {
         public static void Start() {
             // Uncomment this line and replace CONTEXT_NAME with the name of your DbContext if you are 
             // using your DbContext to create and manage your database
-            // Database.SetInitializer(new DontDropDbJustCreateTablesIfModelChanged<CONTEXT_NAME>());
+            Database.SetInitializer(new DontDropDbJustCreateTablesIfModelChanged<ProfNotebookContext>());
         }
     }
 }
